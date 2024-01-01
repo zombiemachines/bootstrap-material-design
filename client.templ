@@ -1,0 +1,28 @@
+package main
+import "strconv"
+
+//Get one Client
+templ showClient(c Client){
+                <div class="accordion-item" id={"client-"+strconv.FormatInt(c.ID,10)}>
+                      <h2 class="accordion-header">
+                          <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#content-accordion-"+strconv.FormatInt(c.ID,10)}>
+                              {strconv.FormatInt(c.ID,10)} - {c.Fname} {c.Lname}
+                          </button>
+                      </h2>
+                      <div id={"content-accordion-"+strconv.FormatInt(c.ID,10)} class="accordion-collapse collapse" data-bs-parent="#faqlist" hx-target="this" hx-swap="innerHTML">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <p class="accordion-body"> {c.Email} - {c.Ipaddr}</p>
+                          </div>
+                        </div>
+                        <div>
+                        </div>
+                        <div class="col-md-12 d-flex justify-content-end" style="padding-right: 5%;padding-bottom: 5%;">
+                          <a hx-get={"/client/"+strconv.FormatInt(c.ID,10)+"/edit"} class="btn btn-primary d-block" type="button" style="background: var(--bs-warning);border-color: var(--bs-yellow);">
+                            <i class="fa fa-edit"></i>
+                          </a>
+                        </div>
+                      </div>
+                  </div>
+
+}

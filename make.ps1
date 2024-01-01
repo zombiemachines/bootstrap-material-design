@@ -1,0 +1,4 @@
+
+templ generate
+
+go run .

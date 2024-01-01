@@ -1,0 +1,46 @@
+package main
+import (
+    "strconv"
+    "fmt"
+)
+
+
+//
+templ editClient(c Client){
+    <form hx-put={"/client/"+fmt.Sprint(c.ID)+"/edit"}  hx-target={"#client-"+fmt.Sprint(c.ID)} hx-swap="outerHTML">
+        <div class="row profile-row d-flex justify-content-center">
+            <div class="col-md-8">
+                    <h1>Client {strconv.FormatInt(c.ID,10)}</h1>
+                <hr></hr>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group mb-3"><label class="form-label">Firstname </label>
+                            <input value={c.Fname} class="form-control" type="text" name="fname"></input>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group mb-3"><label class="form-label">Lastname </label>
+                        <input value={c.Lname} class="form-control" type="text" name="lname"></input>
+                    </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3"><label class="form-label">Email </label>
+                    <input value={c.Email} class="form-control" type="email" autocomplete="off" required="" name="email"></input>
+                </div>
+                <div class="row">
+                    <div class="col"><label class="form-label">IP Address</label>
+                    <input value={c.Ipaddr} class="form-control" type="text" autocomplete="off" name="ipaddr"></input>
+                    </div>
+                </div>
+                <hr></hr>
+                <div class="row">
+                    <div class="col-md-12 content-right">
+                        <button class="btn btn-primary form-btn" type="submit" style="background: #0dfd33;" >SAVE</button>
+                        <button class="btn btn-danger form-btn" type="reset" style="background: var(--bs-btn-bg);" hx-get={"/client/"+strconv.FormatInt(c.ID,10)} hx-target={"#client-"+strconv.FormatInt(c.ID,10)} >CANCEL</button>
+                        <button class="btn btn-danger form-btn" type="button" style="background: #0000007d;" data-client-id={strconv.FormatInt(c.ID,10)} hx-delete={"/clients/delete/"+strconv.FormatInt(c.ID,10)} hx-confirm="Are you sure you want to delete this entry?" hx-target="closest div.accordion-item" hx-swap="outerHTML swap:1s">DELETE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}

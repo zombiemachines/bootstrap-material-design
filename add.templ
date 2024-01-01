@@ -1,0 +1,69 @@
+package main
+import (
+    // "strconv"
+)
+
+
+//TO FIX
+templ addPage(){
+	<html data-bs-theme="dark" lang="en">
+
+<head>
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"></meta>
+    <title>Clients List</title>
+    <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="/static/assets/css/styles.min.css"></link>
+    <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/assets/js/htmx.min.js"></script>
+
+</head>
+<body id="clientContent">
+
+@navBar("add")
+<section class="py-5 bg-dark">
+<div class="container">
+    <form hx-post="/clients/add" hx-target="#clientContent" hx-swap="outerHTML"> //
+        <div class="row profile-row d-flex justify-content-center">
+            <div class="col-md-8">
+                <h1>Add Client</h1>
+                <hr></hr>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group mb-3"><label class="form-label">Firstname </label>
+                            <input value="" class="form-control" type="text" name="fname"></input>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group mb-3"><label class="form-label">Lastname </label>
+                        <input value=""
+                         class="form-control" type="text" name="lname"></input>
+                    </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3"><label class="form-label">Email </label>
+                
+                    <input value=""
+                        class="form-control" type="email" autocomplete="off" required="" name="email"></input>
+                </div>
+                <div class="row">
+                    <div class="col"><label class="form-label">IP Address</label>
+                    <input 
+                    value="" class="form-control" type="text" autocomplete="off" name="ipaddr"></input>
+                    </div>
+                </div>
+                <hr></hr>
+                <div class="row">
+                    <div class="col-md-12 content-right"><button class="btn btn-primary form-btn" type="submit"
+                            style="background: #0dfd33;">SAVE</button><button class="btn btn-danger form-btn"
+                            type="reset" style="background: var(--bs-btn-bg);" hx-target="#clientContent" hx-get="/clients">CANCEL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+	</div>
+</section>
+</body>
+</html>
+}
